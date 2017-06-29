@@ -1,0 +1,23 @@
+server:
+  port: 9020
+spring:
+  application:
+    name: feng-zuul
+zuul:
+  routes:
+    user-route:
+      path: /user/**
+      url: http://localhost:9011
+    hello-route:
+      path: /hello/**
+      url: http://localhost:9001
+ribbon:
+  eureka:
+    enabled: false    
+# 禁用掉ribbon的eureka使用。详见：http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_example_disable_eureka_use_in_ribbon
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true
